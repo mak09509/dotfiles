@@ -5,7 +5,7 @@ return {
     config = function()
         require("ibl").setup({
             indent = {
-                char = "▏" -- thin line on the left side
+                char = "│"
             },
             scope = {
                 show_start = false,

@@ -1,11 +1,10 @@
 return {
-    "Mofiqul/vscode.nvim",
+    "sainnhe/gruvbox-material",
     lazy = false,
     priority = 1000,
     config = function()
-        require("vscode").setup({
-            transparent = false,
-        })
-        vim.cmd([[ colorscheme vscode ]])
+        vim.g.gruvbox_material_background = 'hard'
+        vim.cmd("colorscheme gruvbox-material")
     end,
 }
+

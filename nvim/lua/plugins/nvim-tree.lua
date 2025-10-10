@@ -9,7 +9,7 @@ return {
         nvimtree.setup({})
 
         local keymap = vim.keymap
-        keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>")
-        keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>")
+        keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>")
+        keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
     end
 }
