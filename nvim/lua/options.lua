@@ -24,17 +24,3 @@ vim.o.scrolloff = 12
 vim.o.cursorline = true
 
 vim.opt.clipboard = "unnamedplus"
-
-local folds_augroup = vim.api.nvim_create_augroup("Folds", { clear = true })
-vim.api.nvim_create_autocmd("BufWinLeave", {
-  group = folds_augroup,
-  callback = function()
-    vim.cmd("mkview")
-  end,
-})
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = folds_augroup,
-  callback = function()
-    vim.cmd("silent! loadview")
-  end,
-})

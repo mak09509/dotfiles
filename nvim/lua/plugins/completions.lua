@@ -11,13 +11,16 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
     },
+    performance = {
+      max_view_entries = 200, -- allow a large visible list
+    },
     config = function()
       local cmp = require("cmp")
 
       cmp.setup({
-        preselect = "item",
+        preselect = cmp.PreselectMode.Item,
         completion = {
-          completeopt = "menu,menuone,noinsert"
+          completeopt = "menu,menuone,noinsert",
         },
         mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -29,11 +32,12 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "path" },
+          { name = "nvim_lsp", max_item_count = 12 },
+          { name = "buffer", max_item_count = 12 },
+          { name = "path", max_item_count = 12 },
         }),
       })
     end,
   },
 }
+
