@@ -24,7 +24,7 @@ config.freetype_render_target = "HorizontalLcd"
 
 
 config.window_padding = {
-    left = 4,
+    left = 2,
     right = 0,
     top = 0,
     bottom = 0,
