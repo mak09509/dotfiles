@@ -1,43 +1,45 @@
 return {
-  {
-    "hrsh7th/cmp-nvim-lsp",
-    lazy = true,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
+	"hrsh7th/nvim-cmp",
+	event = { "InsertEnter" },
+	
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
     },
-    performance = {
-      max_view_entries = 200, -- allow a large visible list
-    },
     config = function()
-      local cmp = require("cmp")
+		local cmp = require("cmp")
 
-      cmp.setup({
+    cmp.setup({
         preselect = cmp.PreselectMode.Item,
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
+		window = {
+			documentation = cmp.config.disable
+		},
         mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-b>"] = cmp.mapping.scroll_docs(-1),
-          ["<C-f>"] = cmp.mapping.scroll_docs(1),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+			["<C-k>"] = cmp.mapping.select_prev_item(),
+			["<C-j>"] = cmp.mapping.select_next_item(),
+			["<C-b>"] = cmp.mapping.scroll_docs(-1),
+			["<C-f>"] = cmp.mapping.scroll_docs(1),
+			["<C-Space>"] = cmp.mapping.complete(),
+			["<C-e>"] = cmp.mapping.abort(),
+			["<CR>"] = cmp.mapping.confirm({ select = false }),
         }),
+		formatting = {
+			format = function(entry, vim_item)
+			vim_item.abbr = vim_item.abbr
+			vim_item.menu = " "
+			vim_item.detail = " "
+			return vim_item
+        end
+      },
         sources = cmp.config.sources({
-          { name = "nvim_lsp", max_item_count = 12 },
-          { name = "buffer", max_item_count = 12 },
-          { name = "path", max_item_count = 12 },
+			{ name = "nvim_lsp", max_item_count = 8 },
+			{ name = "buffer", max_item_count = 8 },
+			{ name = "path", max_item_count = 4 }
         }),
-      })
-    end,
-  },
+    })
+    end
 }
 
