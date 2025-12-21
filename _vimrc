@@ -20,7 +20,3 @@ set clipboard=unnamed,unnamedplus
 set termguicolors
 set background=dark
 colorscheme retrobox
-
-set viewoptions=folds,options,cursor,unix,slash
-autocmd BufWinLeave * silent! mkview
-autocmd BufWinEnter * silent! loadview
